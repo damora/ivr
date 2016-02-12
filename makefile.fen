@@ -1,0 +1,126 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = xlc_r
+CXX           =	xlcxx_r
+DEFINES       = -D_RENDER -DIVR_DEBUG -D__GNUC__
+CFLAGS        =  -q64  -pg -qsmp=omp -g -O2  $(DEFINES)
+CXXFLAGS      =  -q64  -pg -qsmp=omp -g -O2  $(DEFINES)
+INCPATH       = -I.  -I/usr/include -I/usr/include/GL
+LINK          =	xlc_r -q64 -qsmp=omp
+LFLAGS        = 
+LIBS          =
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MOVE          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = ./main.c \
+				./glui.c	\
+				./mathutil.c	\
+				./ray.c	\
+				./transferfuncs.c
+
+OBJECTS       = main.o \
+				glui.o	\
+				mathutil.o	\
+				ray.o	\
+				transferfuncs.o
+DESTDIR       = 
+TARGET        =	iVR 
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile $(TARGET)
+
+$(TARGET):  $(OBJECTS)  
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) *~ core *.core
+
+
+####### Sub-libraries
+
+distclean: clean
+	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) makefile
+
+
+check: first
+
+
+####### Compile
+
+main.o: ./main.c ./types.h \
+		./mathutil.h ./sysutil.h ./transferfuncs.h ./profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o ./main.c
+
+transferfuncs.o: ./transferfuncs.c ./transferfuncs.h ./types.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o transferfuncs.o ./transferfuncs.c
+
+mathutil.o: ./mathutil.c ./mathutil.h  ./types.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o mathutil.o ./mathutil.c
+
+ray.o: ./ray.c ./mathutil.h  ./types.h
+	$(CC) -c $(CFLAGS) -qlist -qsource $(INCPATH) -o ray.o ./ray.c
+
+glui.o: ./glui.c ./glui.h  ./types.h ./mathutil.h ./profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o glui.o glui.c
+
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

@@ -1,0 +1,117 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            	= llvm-gcc-4.2
+CXX           	= llvm-g++-4.2
+DEFINES			= -DLOCAL -D_RENDER
+CFLAGS        	= -std=gnu99 -pg -g -time -fgnu89-inline -qunroll-loops -qvectorize -fopenmp   -O3 -Wall -W $(DEFINES)
+CXXFLAGS      	= -fopenmp -O4 -mmacosx-version-min=10.5 -Wall -W $(DEFINES)
+INCPATH       	= -I./ -I/Library/Frameworks/OpenGL.framework/Headers -I../GLUT.framework/Headers  -F/Library/Frameworks
+LINK          	= llvm-gcc-4.2 -fopenmp
+LFLAGS        	= -mmacosx-version-min=10.5
+LIBS          	= $(SUBLIBS) -F/Library/Frameworks -L/Library/Frameworks -framework OpenGL -framework GLUT 
+AR            	= ar cq
+RANLIB        	= ranlib -s
+TAR           	= tar -cf
+COMPRESS      	= gzip -9f
+COPY          	= cp -f
+SED           	= sed
+COPY_FILE     	= cp -f
+COPY_DIR      	= cp -f -R
+STRIP         	= 
+INSTALL_FILE  	= $(COPY_FILE)
+INSTALL_DIR   	= $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+SYMLINK       	= ln -f -s
+DEL_DIR       	= rmdir
+MV          	= mv -f
+CHK_DIR_EXISTS	= test -d
+MKDIR         	= mkdir -p
+RM				= rm -f
+export MACOSX_DEPLOYMENT_TARGET = 10.4
+
+
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+
+SOURCES	   = 	ivrclient.c		\
+					mathutil.c		\
+					utils.c			\
+					trackball.c			\
+					connection.c
+OBJECTS	   = 	ivrclient.o		\
+					mathutil.o		\
+					utils.o			\
+					trackball.o			\
+					connection.o
+
+TARGET        =	ivrclient 
+
+DESTDIR       =  bin
+
+###### set compiler
+####### Output directory
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.ivrclient $(TARGET)
+
+$(TARGET):  $(OBJECTS)  
+	$(RM) connection.o
+	$(RM) mathutil.o
+	$(RM) utils.o
+	$(CC) -c $(CFLAGS) $(INCPATH) -o ivrclient.o ivrclient.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o utils.o utils.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o mathutil.o mathutil.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o trackball.o trackball.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o connection.o connection.c
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)
+
+clean: 
+	-$(RM) $(DESTDIR)/$(TARGET) $(OBJECTS)
+	-$(RM) *~ core *.core
+
+
+
+check: first
+
+
+compiler_objective_c_make_all:
+compiler_objective_c_clean:
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

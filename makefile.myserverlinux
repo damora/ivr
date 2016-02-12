@@ -1,0 +1,100 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = gcc
+CXX           = g++
+CFLAGS        = -std=gnu99 -g -O3 -Wall -W $(DEFINES)
+CXXFLAGS      = -O4 -Wall -W $(DEFINES)
+INCPATH       = -I. 
+LINK          = gcc
+LFLAGS        = -headerpad_max_install_names
+LIBS          = $(SUBLIBS) -lcurses
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MV          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = myserver.c connection.c
+
+OBJECTS       = myserver.o connection.o
+DESTDIR       = bin
+TARGET       = myserver_linux
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.myserverlinux $(TARGET) 
+
+$(TARGET):  $(OBJECTS) makefile.myserverfen 
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)/$(TARGET)
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS) $(DESTDIR)/$(TARGET)
+	-$(DEL_FILE) *~ core *.core
+
+
+
+
+
+check: first
+
+
+compiler_objective_c_make_all:
+compiler_objective_c_clean:
+
+####### Compile
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

@@ -1,0 +1,151 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+#CC            = llvm-gcc
+#CXX           = llvm-g++
+CC            = llvm-gcc-4.2
+CXX           = llvm-g++-4.2
+#CC            = clang
+#CXX           = clang++
+DEFINES       = -DIVR_DEBUG -DRAINBOW -D_RENDER -DLOCAL #-DORTHO
+CFLAGS        =  -std=gnu99  -pg -g -time -fgnu89-inline -qunroll-loops -qvectorize -fopenmp   -O3 -Wall -W $(DEFINES)
+#CXXFLAGS      = -fopenmp -O4 -mmacosx-version-min=10.5 -Wall -W $(DEFINES)
+INCPATH       = -I.  -I/Library/Frameworks/OpenGL.framework/Headers -I../GLUT.framework/Headers -I. -F/Library/Frameworks
+LINK          = llvm-gcc-4.2 -pg -fopenmp
+#LINK          = clang
+LFLAGS        = -headerpad_max_install_names -mmacosx-version-min=10.5
+LIBS          = $(SUBLIBS) -F/Library/Frameworks -L/Library/Frameworks -framework OpenGL -framework GLUT -fopenmp 
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MV          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+export MACOSX_DEPLOYMENT_TARGET = 10.4
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = main.c \
+				glui.c	\
+				utils.c	\
+				ray.c	\
+				mathutil.c	\
+				colormap.c	\
+				trackball.c	\
+				transferfuncs.c
+
+OBJECTS       = main.o \
+				glui.o	\
+				utils.o	\
+				ray.o	\
+				mathutil.o	\
+				colormap.o	\
+				trackball.o	\
+				transferfuncs.o
+DESTDIR       = bin
+TARGET        =	iVR 
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.mac $(TARGET)
+
+$(TARGET):  $(OBJECTS) makefile.mac
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)/$(TARGET)
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) $(DESTDIR)/$(TARGET)
+	-$(DEL_FILE) *~ core *.core
+
+
+
+####### Sub-libraries
+
+distclean: clean
+	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) makefile
+
+
+check: first
+
+
+compiler_objective_c_make_all:
+compiler_objective_c_clean:
+
+####### Compile
+
+main.o: main.c types.h \
+		mathutil.h sysutil.h transferfuncs.h profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o main.c
+
+transferfuncs.o: transferfuncs.c transferfuncs.h types.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o transferfuncs.o transferfuncs.c
+
+colormap.o: colormap.c colormap.h types.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o colormap.o colormap.c
+
+mathutil.o: mathutil.c mathutil.h  types.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o mathutil.o mathutil.c
+
+glui.o: glui.c glui.h  types.h mathutil.h profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o glui.o glui.c
+
+ray.o: ray.c types.h mathutil.h profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o ray.o ray.c
+
+trackball.o: trackball.c types.h mathutil.h profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o trackball.o trackball.c
+
+utils.o: utils.c utils.h  types.h mathutil.h profile.h
+	$(CC) -c $(CFLAGS) $(INCPATH) -o utils.o utils.c
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

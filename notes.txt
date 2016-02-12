@@ -1,0 +1,14 @@
+3/6/2013:
+changed matrix order in:
+projectvolbbox()
+axixangtomatrix()
+
+how to handle multiple input format types?
+- e.g. each voxel can contain a 1-,2-,3-,4-,...5-tuple value
+- impacts read volume code
+	-- need to adjust readvoldata to accomodate 
+- impacts colormap,histogram,gradient code
+- impacts getsamplevalue code
+- impacts transferfunc
+- 
+

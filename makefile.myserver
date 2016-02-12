@@ -1,0 +1,97 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = llvm-gcc
+CXX           = llvm-g++
+CFLAGS        = -std=gnu99 -g -O3 -Wall -W $(DEFINES)
+CXXFLAGS      = -O4 -mmacosx-version-min=10.5 -Wall -W $(DEFINES)
+INCPATH       = -I.   -F/Library/Frameworks
+LINK          = llvm-gcc
+LFLAGS        = -headerpad_max_install_names -mmacosx-version-min=10.5
+LIBS          = $(SUBLIBS) -F/Library/Frameworks -L/Library/Frameworks  -lcurses
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MV          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+export MACOSX_DEPLOYMENT_TARGET = 10.4
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = myserver.c connection.c
+
+OBJECTS       = myserver.o connection.o
+DESTDIR       = bin
+TARGET       = myserver
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.myserver $(TARGET)
+
+$(TARGET):  $(OBJECTS) makefile.myserver 
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)/
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) *~ core *.core
+	-$(DEL_FILE) $(DESTDIR)/$(TARGET) 
+
+
+check: first
+
+
+compiler_objective_c_make_all:
+compiler_objective_c_clean:
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

@@ -1,0 +1,123 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = mpixlc_r
+CXX           =	mpixlcxx_r
+DEFINES       = -DBIGENDIAN -D_RENDER -DRAINBOW -DBGQ -DMPI -DREMOTE -DMEMIMAGE
+CFLAGS        = -g -pg -qnohot -qsimd=noauto  -O3  $(DEFINES)
+CXXFLAGS      = -qnohot -qsimd=noauto  -O3  $(DEFINES)
+INCPATH       = -I.
+LINK          =	mpixlc_r -pg
+LFLAGS        = 
+LIBS          =
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MV          = mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+
+####### Output directory
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       =     main.c          \
+                    utils.c         \
+                    ray.c           \
+                    mathutil.c      \
+                    colormap.c      \
+                    transferfuncs.c \
+                    install_signal_handler.c    \
+                    connection.c
+
+OBJECTS       =     main.o          \
+                    utils.o         \
+                    ray.o           \
+                    mathutil.o      \
+                    colormap.o      \
+                    transferfuncs.o \
+                    install_signal_handler.o    \
+                    connection.o
+DESTDIR       = bin
+TARGET        =	ivrserver 
+
+
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.bgq  $(TARGET)
+
+$(TARGET):  $(OBJECTS)  
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)/
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS) $(DESTDIR)/$(TARGET)
+	-$(DEL_FILE) *~ core *.core core.*
+	-$(DEL_FILE) $(DESTDIR)/$(TARGET) 
+
+
+check: first
+
+
+#$(TARGET):  $(OBJECTS) *.h
+#		$(RM) connection.o mathutils.o utils.o
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o main.o main.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o transferfuncs.o transferfuncs.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o mathutil.o mathutil.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o ray.o ray.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o utils.o utils.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o colormap.o colormap.c
+#		$(CC) -c $(CFLAGS) $(INCPATH) -o connection.o connection.c
+#		$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS)  $(LIBS)
+#		$(MV) $(TARGET) $(DESTDIR)/
+#
+
+
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

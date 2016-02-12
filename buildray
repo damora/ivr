@@ -1,0 +1,52 @@
+/************* Begin of buildray Function ****************************/
+/***********************************************************************/
+/*                                                                     */
+/* FUNCTION: buildray                                                */
+/* DESCRIPTION: builds ray through ith,jth pixel in world coords       */
+/* INPUT:  i,j - row, and column                                       */
+/* OUTPUT: ray - RAY                                                   */
+/***********************************************************************/
+
+void buildray(float du, float dv, vector3f *i,vector3f *j, ray3f *ray)
+{
+	vector3f  eye, uvn, trans;
+	matrix3f ctm;
+
+  	uvn.x = winwidth - camera.e.u;                      /* build i,j th ray */
+  	uvn.y = winheight - camera.e.v;
+  	uvn.z  = -camera.e.n;
+                                       /* compute row delta and column delta */
+  	i->x = i->z = 0.0f; i->y = dv;
+  	j->x = du; j->y = j->z = 0.0f;
+
+
+	// get view translation factor
+	trans.x = mvm[0][3]; trans.y = mvm[1][3]; trans.z = 0.0f;
+
+	// set start position, eye represents camera eye in world cooords translated by vrp
+	eye = mat3fxvec3f(vwm, camera.e);
+	eye = vec3fadd(eye, camera.r);
+
+  	ray->orig.x = eye.x - trans.x;
+  	ray->orig.y = eye.y - trans.y;
+  	ray->orig.z = eye.z - trans.z;
+
+	// transpose to get inverse rotation
+	for (int i=0; i<3; i++)
+		for (int j=0; j<3; j++)
+			ctm[i][j] = mvm[j][i];
+	// rotate ray origin by inverse current modelview
+	ray->orig = mat3fxvec3f(ctm, ray->orig);
+
+	// concatenate with view to world transform matrix to transform ray with a single matrix multiply
+  	mat3fxmat3f(ctm, vwm);
+    // compute direction vector 
+  	ray->dir = mat3fxvec3f(ctm, ray->dir);
+
+    // compute i,j increment values 
+  	*i = mat3fxvec3f(ctm,*i);
+  	*j = mat3fxvec3f(ctm,*j);
+}
+
+/************* End of buildray  Function*******************************/
+

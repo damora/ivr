@@ -1,0 +1,102 @@
+754c754
+< 	// compute overlap for each tile and subtile
+---
+> 	// compute overlap for each main display tile and the subtile
+780,799d779
+< #if 0
+< 	// there are h rows each representing a block
+< 	// each row is the w of the tile times 4 floats (RGBA)
+< 	// the next block is WINDOWWIDTH*4 (RGBA) floats  from the current block position
+< 	int w = (int) (tiles[rank].w/* + 0.5f*/);
+< 	int h = (int) (tiles[rank].h/* + 0.5f*/);
+< 	int x = (int) (tiles[rank].x/* + 0.5f*/);
+< 	int y = (int) (tiles[rank].y/* + 0.5f*/);
+< 	// init initbuffer
+< 	initbuffer = (float *) malloc(sizeof(float) * w * h * ELEMENTSPERPIXEL);
+< 	assert(initbuffer != NULL);
+< 	for (int i=0,j=0; i<w*h; i++) {
+< 		initbuffer[j] = 0.0f;
+< 		initbuffer[j+1] = 0.0f;
+< 		initbuffer[j+2] = 0.0f;
+< 		initbuffer[j+3] = 1.0f;
+< 		j += 4;
+< 	}
+< #endif	
+< 
+804,805d783
+< 	int rcv;
+< 	int snd;
+812,813c790,795
+< 	rcv = 0;
+< 	snd = 0;
+---
+> 	int rcv = 0;
+> 	int snd = 0;
+> 	int rcvbufwid = 0;
+> 	int rcvbufhgt = 0;
+> 	int sndbufwid = 0;
+> 	int sndbufhgt = 0;
+826a809,810
+> 					rcvbufwid += w;
+> 					rcvbufhgt += h;
+830a815,816
+> 					sndbufwid += w;
+> 					sndbufhgt += h;
+841c827,828
+<     	rcolorbuf = (float *) malloc(sizeof(float) * w * h * rcv * ELEMENTSPERPIXEL);
+---
+>     //	rcolorbuf = (float *) malloc(sizeof(float) * w * h * rcv * ELEMENTSPERPIXEL);
+>     	rcolorbuf = (float *) malloc(sizeof(float) * rcvbufwid * rcvbufhgt  * ELEMENTSPERPIXEL);
+849a837,838
+> 			   int rcvwid=0;
+> 			   int rcvhgt=0;
+851,852c840,847
+<                		float *rbuf = (rcolorbuf + w*h*ELEMENTSPERPIXEL*i);
+<    	            	MPI_Irecv(rbuf, w*h*4, MPI_FLOAT, r[i], 0, MPI_COMM_WORLD, &rrequests[nr++]);
+---
+> 					w = tiles[r[i]].w;
+> 					h = tiles[r[i]].h;
+>     //           		float *rbuf = (rcolorbuf + w*h*ELEMENTSPERPIXEL*i);
+>                		float *rbuf = (rcolorbuf + rcvwid*rcvhgt*ELEMENTSPERPIXEL);
+> fprintf(stderr,"rank:%d, rcvwid*rcvhgt=%d, w*h*i=%d\n", rank,rcvwid*rcvhgt, w*h*i);
+>    	            	MPI_Irecv(rbuf, w*h*ELEMENTSPERPIXEL, MPI_FLOAT, r[i], 0, MPI_COMM_WORLD, &rrequests[nr++]);
+> 					rcvwid += w;
+> 					rcvhgt += h;
+863c858,859
+< 		scolorbuf = (float*) malloc(sizeof(float) * w *h * ELEMENTSPERPIXEL * snd);
+---
+> //		scolorbuf = (float*) malloc(sizeof(float) * w *h * ELEMENTSPERPIXEL * snd);
+> 		scolorbuf = (float*) malloc(sizeof(float) * sndbufwid * sndbufhgt * ELEMENTSPERPIXEL);
+865a862,863
+> 		int sndwid=0;
+> 		int sndhgt=0;
+875c873,875
+<             float *sbuf = (scolorbuf + w*h*ELEMENTSPERPIXEL*i);
+---
+>      //       float *sbuf = (scolorbuf + w*h*ELEMENTSPERPIXEL*i);
+>             float *sbuf = (scolorbuf + sndwid*sndhgt*ELEMENTSPERPIXEL);
+> fprintf(stderr,"rank:%d, sndwid*sndhgt=%d, w*h*i=%d\n", rank,sndwid*sndhgt, w*h*i);
+879a880,881
+> 			sndwid += w;
+> 			sndhgt += h;
+887d888
+< 	// free(scolorbuf);
+890c891,894
+< 		int elements = w*h*ELEMENTSPERPIXEL;
+---
+> //		int elements = w*h*ELEMENTSPERPIXEL;
+> 		w = tiles[rank].w;
+> 		h = tiles[rank].h;
+> 		int elements = w * h * ELEMENTSPERPIXEL;
+897c901
+< 			compositetiles(tilebuffer, rcolorbuf,  rcv, w, h);
+---
+> 			compositetiles(tilebuffer, rcolorbuf, rcv, w, h);
+908d911
+<   	//	free(rcolorbuf);
+913,915d915
+< #if 0
+< 	free(initbuffer);
+< #endif
+1216d1215
+< 	fprintf(stderr,"gdims=[%d, %d, %d], ldims=[%d, %d, %d], startindex=[%d, %d, %d]\n", gdims[0],gdims[1], gdims[2], ldims[0], ldims[1], ldims[2], sindex[0], sindex[1], sindex[2]);

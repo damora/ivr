@@ -1,0 +1,590 @@
+rank=0
+rank=1
+rank:1, viewport.tilewid=64, viewport.tilehgt=64
+rank:1 ,viewport.tilex=20, viewport.tiley=11
+rank:0, viewport.tilewid=64, viewport.tilehgt=64
+rank:0 ,viewport.tilex=20, viewport.tiley=11
+rank:0,  viewport.w=1280.000000, viewport.h=704.000000
+rank:1,  viewport.w=1280.000000, viewport.h=704.000000
+setplaneconst(): dconst=1.000000
+rank:0, comsize:2
+setplaneconst(): dconst=1.000000
+rank:1, comsize:2
+rank: 0, localbytes=55863504
+gdims=[201, 501, 276], ldims=[101, 501, 276], startindex=[0, 0, 0]
+rank: 1, localbytes=55863504
+gdims=[201, 501, 276], ldims=[101, 501, 276], startindex=[100, 0, 0]
+rank: 0, startindex[0], startindex[1], startindex[2]=0, 0, 0
+rank: 1, startindex[0], startindex[1], startindex[2]=100, 0, 0
+  0:  MINMAX- 1468.567261, 4986.235352
+  1:  MINMAX- 1468.567261, 4986.235352
+rank:1,  vpsize=901120
+rank:0,  vpsize=901120
+  1: 
+  1: before steering control
+hostname=localhost, portnum=1400
+client: connect: Connection refused
+client: connecting to 127.0.0.1
+client: received 'Hello, world!'
+relay connection succeeded
+  0: 
+  0: before steering control
+bytes recvd=184
+setplaneconst(): dconst=1.000000
+MINMAX: -1.000000, -0.401198, -5.550898, 1.000000, -0.001996, -4.449102
+rank:0,  vpsize=901120
+setplaneconst(): dconst=1.000000
+MINMAX: -1.000000, -0.001996, -5.550898, 1.000000, 0.401198, -4.449102
+rank:1,  vpsize=901120
+rank=0, istrt=272, istop=352, jstrt=437, jstop=843
+rank=1, istrt=351, istop=432, jstrt=437, jstop=843
+  0: TILE: 86 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 87 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 88 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 89 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 90 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 91 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 92 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 93 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 106 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 106 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 107 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 107 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 108 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 108 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 109 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 109 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 110 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 110 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 111 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 111 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 112 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 112 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 113 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 113 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  0: TILE: 126 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 127 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 128 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 86 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 87 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 88 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 89 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 90 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 91 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 92 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 93 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 106 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 106 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 107 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 107 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 108 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 108 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 109 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 109 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 110 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 110 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 111 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 111 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 112 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 112 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 113 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 113 -BOXRANK: 0 -  BBOXDEPTH: 0.980735
+  1: TILE: 126 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 127 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 128 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 129 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 130 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 131 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 132 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  1: TILE: 133 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+tile=0 w,h=64,64
+tile=1 w,h=64,64
+tile=2 w,h=64,64
+tile=3 w,h=64,64
+tile=4 w,h=64,64
+tile=5 w,h=64,64
+tile=6 w,h=64,64
+tile=7 w,h=64,64
+  0: TILE: 129 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 130 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 131 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 132 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+  0: TILE: 133 -BOXRANK: 1 -  BBOXDEPTH: 0.980735
+tile=0 w,h=64,64
+tile=1 w,h=64,64
+tile=2 w,h=64,64
+tile=3 w,h=64,64
+tile=4 w,h=64,64
+tile=5 w,h=64,64
+tile=6 w,h=64,64
+tile=7 w,h=64,64
+tile=8 w,h=64,64
+tile=9 w,h=64,64
+tile=10 w,h=64,64
+tile=11 w,h=64,64
+tile=12 w,h=64,64
+tile=13 w,h=64,64
+tile=14 w,h=64,64
+tile=15 w,h=64,64
+tile=16 w,h=64,64
+tile=17 w,h=64,64
+tile=18 w,h=64,64
+tile=19 w,h=64,64
+tile=20 w,h=64,64
+tile=21 w,h=64,64
+tile=22 w,h=64,64
+tile=23 w,h=64,64
+tile=24 w,h=64,64
+tile=8 w,h=64,64
+tile=9 w,h=64,64
+tile=10 w,h=64,64
+tile=11 w,h=64,64
+tile=12 w,h=64,64
+tile=13 w,h=64,64
+tile=14 w,h=64,64
+tile=15 w,h=64,64
+tile=16 w,h=64,64
+tile=17 w,h=64,64
+tile=18 w,h=64,64
+tile=19 w,h=64,64
+tile=20 w,h=64,64
+tile=21 w,h=64,64
+tile=22 w,h=64,64
+tile=23 w,h=64,64
+tile=24 w,h=64,64
+tile=25 w,h=64,64
+tile=26 w,h=64,64
+tile=27 w,h=64,64
+tile=28 w,h=64,64
+tile=25 w,h=64,64
+tile=26 w,h=64,64
+tile=27 w,h=64,64
+tile=28 w,h=64,64
+tile=29 w,h=64,64
+tile=30 w,h=64,64
+tile=31 w,h=64,64
+tile=29 w,h=64,64
+tile=30 w,h=64,64
+tile=31 w,h=64,64
+tile=32 w,h=64,64
+tile=33 w,h=64,64
+tile=34 w,h=64,64
+tile=35 w,h=64,64
+tile=36 w,h=64,64
+tile=37 w,h=64,64
+tile=38 w,h=64,64
+tile=39 w,h=64,64
+tile=40 w,h=64,64
+tile=41 w,h=64,64
+tile=42 w,h=64,64
+tile=43 w,h=64,64
+tile=44 w,h=64,64
+tile=45 w,h=64,64
+tile=46 w,h=64,64
+tile=47 w,h=64,64
+tile=48 w,h=64,64
+tile=49 w,h=64,64
+tile=50 w,h=64,64
+tile=51 w,h=64,64
+tile=52 w,h=64,64
+tile=53 w,h=64,64
+tile=32 w,h=64,64
+tile=33 w,h=64,64
+tile=34 w,h=64,64
+tile=35 w,h=64,64
+tile=36 w,h=64,64
+tile=37 w,h=64,64
+tile=38 w,h=64,64
+tile=39 w,h=64,64
+tile=40 w,h=64,64
+tile=41 w,h=64,64
+tile=42 w,h=64,64
+tile=43 w,h=64,64
+tile=54 w,h=64,64
+tile=55 w,h=64,64
+tile=56 w,h=64,64
+tile=57 w,h=64,64
+tile=58 w,h=64,64
+tile=59 w,h=64,64
+tile=60 w,h=64,64
+tile=61 w,h=64,64
+tile=62 w,h=64,64
+tile=63 w,h=64,64
+tile=64 w,h=64,64
+tile=65 w,h=64,64
+tile=66 w,h=64,64
+tile=67 w,h=64,64
+tile=44 w,h=64,64
+tile=45 w,h=64,64
+tile=46 w,h=64,64
+tile=47 w,h=64,64
+tile=48 w,h=64,64
+tile=49 w,h=64,64
+tile=50 w,h=64,64
+tile=51 w,h=64,64
+tile=52 w,h=64,64
+tile=53 w,h=64,64
+tile=54 w,h=64,64
+tile=55 w,h=64,64
+tile=68 w,h=64,64
+tile=69 w,h=64,64
+tile=70 w,h=64,64
+tile=71 w,h=64,64
+tile=72 w,h=64,64
+tile=73 w,h=64,64
+tile=74 w,h=64,64
+tile=75 w,h=64,64
+tile=76 w,h=64,64
+tile=77 w,h=64,64
+tile=78 w,h=64,64
+tile=79 w,h=64,64
+tile=80 w,h=64,64
+tile=81 w,h=64,64
+tile=56 w,h=64,64
+tile=57 w,h=64,64
+tile=58 w,h=64,64
+tile=82 w,h=64,64
+tile=83 w,h=64,64
+tile=84 w,h=64,64
+tile=85 w,h=64,64
+tile=86 w,h=64,64
+tile=87 w,h=64,64
+tile=88 w,h=64,64
+tile=89 w,h=64,64
+tile=90 w,h=64,64
+tile=91 w,h=64,64
+tile=92 w,h=64,64
+tile=93 w,h=64,64
+tile=94 w,h=64,64
+tile=95 w,h=64,64
+tile=96 w,h=64,64
+tile=97 w,h=64,64
+tile=98 w,h=64,64
+tile=99 w,h=64,64
+tile=100 w,h=64,64
+tile=101 w,h=64,64
+tile=102 w,h=64,64
+tile=103 w,h=64,64
+tile=59 w,h=64,64
+tile=60 w,h=64,64
+tile=61 w,h=64,64
+tile=62 w,h=64,64
+tile=63 w,h=64,64
+tile=64 w,h=64,64
+tile=65 w,h=64,64
+tile=66 w,h=64,64
+tile=67 w,h=64,64
+tile=68 w,h=64,64
+tile=69 w,h=64,64
+tile=70 w,h=64,64
+tile=71 w,h=64,64
+tile=72 w,h=64,64
+tile=73 w,h=64,64
+tile=74 w,h=64,64
+tile=75 w,h=64,64
+tile=76 w,h=64,64
+tile=77 w,h=64,64
+tile=78 w,h=64,64
+tile=79 w,h=64,64
+tile=80 w,h=64,64
+tile=81 w,h=64,64
+tile=82 w,h=64,64
+tile=83 w,h=64,64
+tile=84 w,h=64,64
+tile=85 w,h=64,64
+tile=104 w,h=64,64
+tile=105 w,h=64,64
+tile=106 w,h=64,64
+tile=107 w,h=64,64
+tile=108 w,h=64,64
+tile=109 w,h=64,64
+tile=110 w,h=64,64
+tile=111 w,h=64,64
+tile=112 w,h=64,64
+tile=113 w,h=64,64
+tile=114 w,h=64,64
+tile=115 w,h=64,64
+tile=116 w,h=64,64
+tile=117 w,h=64,64
+tile=118 w,h=64,64
+tile=86 w,h=64,64
+tile=87 w,h=64,64
+tile=88 w,h=64,64
+tile=89 w,h=64,64
+tile=90 w,h=64,64
+tile=91 w,h=64,64
+tile=92 w,h=64,64
+tile=93 w,h=64,64
+tile=94 w,h=64,64
+tile=95 w,h=64,64
+tile=96 w,h=64,64
+tile=119 w,h=64,64
+tile=120 w,h=64,64
+tile=121 w,h=64,64
+tile=122 w,h=64,64
+tile=123 w,h=64,64
+tile=124 w,h=64,64
+tile=125 w,h=64,64
+tile=126 w,h=64,64
+tile=127 w,h=64,64
+tile=128 w,h=64,64
+tile=129 w,h=64,64
+tile=97 w,h=64,64
+tile=98 w,h=64,64
+tile=99 w,h=64,64
+tile=100 w,h=64,64
+tile=101 w,h=64,64
+tile=102 w,h=64,64
+tile=103 w,h=64,64
+tile=104 w,h=64,64
+tile=105 w,h=64,64
+tile=106 w,h=64,64
+tile=107 w,h=64,64
+tile=130 w,h=64,64
+tile=131 w,h=64,64
+tile=132 w,h=64,64
+tile=133 w,h=64,64
+tile=134 w,h=64,64
+tile=135 w,h=64,64
+tile=136 w,h=64,64
+tile=137 w,h=64,64
+tile=138 w,h=64,64
+tile=139 w,h=64,64
+tile=140 w,h=64,64
+tile=141 w,h=64,64
+tile=108 w,h=64,64
+tile=109 w,h=64,64
+tile=110 w,h=64,64
+tile=111 w,h=64,64
+tile=112 w,h=64,64
+tile=113 w,h=64,64
+tile=114 w,h=64,64
+tile=115 w,h=64,64
+tile=116 w,h=64,64
+tile=117 w,h=64,64
+tile=118 w,h=64,64
+tile=142 w,h=64,64
+tile=143 w,h=64,64
+tile=144 w,h=64,64
+tile=145 w,h=64,64
+tile=146 w,h=64,64
+tile=147 w,h=64,64
+tile=148 w,h=64,64
+tile=149 w,h=64,64
+tile=150 w,h=64,64
+tile=151 w,h=64,64
+tile=152 w,h=64,64
+tile=119 w,h=64,64
+tile=120 w,h=64,64
+tile=121 w,h=64,64
+tile=122 w,h=64,64
+tile=123 w,h=64,64
+tile=124 w,h=64,64
+tile=125 w,h=64,64
+tile=126 w,h=64,64
+tile=127 w,h=64,64
+tile=128 w,h=64,64
+tile=129 w,h=64,64
+tile=130 w,h=64,64
+tile=153 w,h=64,64
+tile=154 w,h=64,64
+tile=155 w,h=64,64
+tile=156 w,h=64,64
+tile=157 w,h=64,64
+tile=158 w,h=64,64
+tile=159 w,h=64,64
+tile=160 w,h=64,64
+tile=131 w,h=64,64
+tile=132 w,h=64,64
+tile=133 w,h=64,64
+tile=134 w,h=64,64
+tile=135 w,h=64,64
+tile=136 w,h=64,64
+tile=137 w,h=64,64
+tile=138 w,h=64,64
+tile=139 w,h=64,64
+tile=140 w,h=64,64
+tile=141 w,h=64,64
+tile=142 w,h=64,64
+tile=143 w,h=64,64
+tile=144 w,h=64,64
+tile=161 w,h=64,64
+tile=162 w,h=64,64
+tile=163 w,h=64,64
+tile=164 w,h=64,64
+tile=165 w,h=64,64
+tile=166 w,h=64,64
+tile=167 w,h=64,64
+tile=168 w,h=64,64
+tile=169 w,h=64,64
+tile=170 w,h=64,64
+tile=171 w,h=64,64
+tile=172 w,h=64,64
+tile=173 w,h=64,64
+tile=174 w,h=64,64
+tile=175 w,h=64,64
+tile=145 w,h=64,64
+tile=146 w,h=64,64
+tile=147 w,h=64,64
+tile=148 w,h=64,64
+tile=149 w,h=64,64
+tile=150 w,h=64,64
+tile=151 w,h=64,64
+tile=152 w,h=64,64
+tile=153 w,h=64,64
+tile=176 w,h=64,64
+tile=177 w,h=64,64
+tile=178 w,h=64,64
+tile=179 w,h=64,64
+tile=180 w,h=64,64
+tile=181 w,h=64,64
+tile=182 w,h=64,64
+tile=183 w,h=64,64
+tile=184 w,h=64,64
+tile=154 w,h=64,64
+tile=155 w,h=64,64
+tile=156 w,h=64,64
+tile=157 w,h=64,64
+tile=158 w,h=64,64
+tile=159 w,h=64,64
+tile=160 w,h=64,64
+tile=161 w,h=64,64
+tile=162 w,h=64,64
+tile=163 w,h=64,64
+tile=164 w,h=64,64
+tile=165 w,h=64,64
+tile=166 w,h=64,64
+tile=167 w,h=64,64
+tile=185 w,h=64,64
+tile=186 w,h=64,64
+tile=187 w,h=64,64
+tile=188 w,h=64,64
+tile=189 w,h=64,64
+tile=190 w,h=64,64
+tile=191 w,h=64,64
+tile=192 w,h=64,64
+tile=193 w,h=64,64
+tile=194 w,h=64,64
+tile=195 w,h=64,64
+tile=196 w,h=64,64
+tile=168 w,h=64,64
+tile=169 w,h=64,64
+tile=170 w,h=64,64
+tile=171 w,h=64,64
+tile=172 w,h=64,64
+tile=173 w,h=64,64
+tile=174 w,h=64,64
+tile=175 w,h=64,64
+tile=176 w,h=64,64
+tile=177 w,h=64,64
+tile=178 w,h=64,64
+tile=179 w,h=64,64
+tile=197 w,h=64,64
+tile=198 w,h=64,64
+tile=199 w,h=64,64
+tile=200 w,h=64,64
+tile=201 w,h=64,64
+tile=202 w,h=64,64
+tile=203 w,h=64,64
+tile=204 w,h=64,64
+tile=205 w,h=64,64
+tile=206 w,h=64,64
+tile=180 w,h=64,64
+tile=181 w,h=64,64
+tile=182 w,h=64,64
+tile=183 w,h=64,64
+tile=184 w,h=64,64
+tile=185 w,h=64,64
+tile=186 w,h=64,64
+tile=187 w,h=64,64
+tile=188 w,h=64,64
+tile=189 w,h=64,64
+tile=190 w,h=64,64
+tile=207 w,h=64,64
+tile=208 w,h=64,64
+tile=209 w,h=64,64
+tile=210 w,h=64,64
+tile=211 w,h=64,64
+tile=212 w,h=64,64
+tile=213 w,h=64,64
+tile=214 w,h=64,64
+tile=215 w,h=64,64
+tile=216 w,h=64,64
+tile=191 w,h=64,64
+tile=192 w,h=64,64
+tile=193 w,h=64,64
+tile=194 w,h=64,64
+tile=195 w,h=64,64
+tile=196 w,h=64,64
+tile=197 w,h=64,64
+tile=198 w,h=64,64
+tile=199 w,h=64,64
+tile=200 w,h=64,64
+tile=201 w,h=64,64
+tile=202 w,h=64,64
+tile=203 w,h=64,64
+tile=204 w,h=64,64
+tile=205 w,h=64,64
+tile=217 w,h=64,64
+tile=218 w,h=64,64
+tile=219 w,h=64,64
+  1: snd=16, i=0, torank 106
+  1: snd=16, i=1, torank 107
+  1: snd=16, i=2, torank 108
+  1: snd=16, i=3, torank 109
+  1: snd=16, i=4, torank 110
+  1: snd=16, i=5, torank 111
+  1: snd=16, i=6, torank 112
+  1: snd=16, i=7, torank 113
+  1: snd=16, i=8, torank 126
+  1: snd=16, i=9, torank 127
+tile=206 w,h=64,64
+tile=207 w,h=64,64
+tile=208 w,h=64,64
+tile=209 w,h=64,64
+tile=210 w,h=64,64
+tile=211 w,h=64,64
+tile=212 w,h=64,64
+tile=213 w,h=64,64
+tile=214 w,h=64,64
+tile=215 w,h=64,64
+tile=216 w,h=64,64
+  1: snd=16, i=10, torank 128
+  1: snd=16, i=11, torank 129
+  1: snd=16, i=12, torank 130
+  1: snd=16, i=13, torank 131
+  1: snd=16, i=14, torank 132
+  1: snd=16, i=15, torank 133
+tile=217 w,h=64,64
+tile=218 w,h=64,64
+tile=219 w,h=64,64
+  0: snd=16, i=0, torank 86
+  0: snd=16, i=1, torank 87
+  0: snd=16, i=2, torank 88
+  0: snd=16, i=3, torank 89
+  0: snd=16, i=4, torank 90
+  0: snd=16, i=5, torank 91
+  0: snd=16, i=6, torank 92
+  0: snd=16, i=7, torank 93
+blocknum=64, blocklen=256, stride=5120
+  0: snd=16, i=8, torank 106
+  0: snd=16, i=9, torank 107
+  0: snd=16, i=10, torank 108
+  0: snd=16, i=11, torank 109
+  0: snd=16, i=12, torank 110
+  0: snd=16, i=13, torank 111
+  0: snd=16, i=14, torank 112
+  0: snd=16, i=15, torank 113
+blocknum=64, blocklen=256, stride=5120
+ivrserver(95559,0x7fff75b6d300) malloc: *** error for object 0x100600768: incorrect checksum for freed object - object was probably modified after being freed.
+*** set a breakpoint in malloc_error_break to debug
+Fatal error in MPI_Isend: Invalid rank, error stack:
+MPI_Isend(146): MPI_Isend(buf=0x108a00000, count=16384, MPI_FLOAT, dest=86, tag=0, MPI_COMM_WORLD, request=0x7fff5fbff130) failed
+MPI_Isend(94).: Invalid rank has value 86 but must be nonnegative and less than 2
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================

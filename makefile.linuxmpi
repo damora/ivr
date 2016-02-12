@@ -1,0 +1,139 @@
+#############################################################################
+# Makefile for building: iVT
+# Project: IBM Volume Ray caster 
+# Template: app
+#############################################################################
+
+####### Compiler, tools and options
+
+CC            = mpicc 
+CXX           = mpic+++
+CC1            = gcc
+CXX1           = g++
+DEFINES       =  -D_RENDER  -DRAINBOW -DMPI -DREMOTE  -DMEMIMAGE #-DORTHO #-DLUT
+CFLAGS        = -g -Wunused -Wunreachable-code  -std=gnu99 -fopenmp -O4 -Wall -W $(DEFINES)
+#CFLAGS        = -g -Wunused -Wunreachable-code  -std=gnu99 -O3 -Wall -W $(DEFINES)
+CXXFLAGS      = -fopenmp -O4  -Wall -W $(DEFINES)
+INCPATH       = -I./ -I/usr/include -I/usr/local/include 
+LINK          = mpicc -fopenmp
+#LINK          = mpicc
+LIBS          = 
+AR            = ar cq
+RANLIB        = ranlib -s
+TAR           = tar -cf
+COMPRESS      = gzip -9f
+COPY          = cp -f
+SED           = sed
+COPY_FILE     = cp -f
+COPY_DIR      = cp -f -R
+STRIP         = 
+INSTALL_FILE  = $(COPY_FILE)
+INSTALL_DIR   = $(COPY_DIR)
+INSTALL_PROGRAM = $(COPY_FILE)
+DEL_FILE      = rm -f
+SYMLINK       = ln -f -s
+DEL_DIR       = rmdir
+MV          	= mv -f
+CHK_DIR_EXISTS= test -d
+MKDIR         = mkdir -p
+export MACOSX_DEPLOYMENT_TARGET = 10.4
+
+
+
+OBJECTS_DIR   = ./
+
+####### Files
+
+SOURCES       = 	main.c 			\
+					utils.c			\
+					ray.c			\
+					mathutil.c		\
+					colormap.c		\
+					transferfuncs.c	\
+					install_signal_handler.c	\
+					connection.c
+OBJECTS       = 	main.o 			\
+					utils.o			\
+					ray.o			\
+					mathutil.o		\
+					colormap.o		\
+					transferfuncs.o	\
+					install_signal_handler.o	\
+					connection.o
+
+SRCCLIENT    =    ivrclient.c     \
+                    mathutil.c      \
+                    utils.c         \
+                    trackball.c         \
+                    connection.c
+OBJCLIENT    =    ivrclient.o     \
+                    mathutil.o      \
+                    utils.o         \
+                    trackball.o         \
+                    connection.o
+
+
+TARGET        =	ivrserver_linux 
+
+DESTDIR       = bin
+
+###### set compiler
+####### Output directory
+first: all
+####### Implicit rules
+
+.SUFFIXES: .o .c .cpp .cc .cxx .C
+
+.cpp.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cc.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.cxx.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.C.o:
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o "$@" "$<"
+
+.c.o:
+	$(CC) -c $(CFLAGS) $(INCPATH) -o "$@" "$<"
+
+####### Build rules
+
+all: makefile.linuxmpi $(TARGET) 
+
+$(TARGET):  $(OBJECTS) *.h 
+	$(RM) connection.o mathutils.o utils.o
+	$(CC) -c $(CFLAGS) $(INCPATH) -o main.o main.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o transferfuncs.o transferfuncs.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o mathutil.o mathutil.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o ray.o ray.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o utils.o utils.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o colormap.o colormap.c
+	$(CC) -c $(CFLAGS) $(INCPATH) -o connection.o connection.c
+	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS)  $(LIBS)
+	$(MV) $(TARGET) $(DESTDIR)/
+
+
+clean: 
+	-$(DEL_FILE) $(OBJECTS)
+	-$(DEL_FILE) *~ core *.core
+	-$(DEL_FILE) $(DESTDIR)/$(TARGET) 
+
+
+
+check: first
+
+
+compiler_objective_c_make_all:
+compiler_objective_c_clean:
+
+####### Install
+
+install:   FORCE
+
+uninstall:   FORCE
+
+FORCE:
+

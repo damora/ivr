@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BV1-FR-VrT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--GLKit View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <glkViewController preferredFramesPerSecond="30" id="BV1-FR-VrT" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dWe-On-idd"/>
+                        <viewControllerLayoutGuide type="bottom" id="nZC-s9-Y68"/>
+                    </layoutGuides>
+                    <glkView key="view" contentMode="scaleToFill" id="3se-qz-xqx">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lX7-5S-f1M">
+                                <rect key="frame" x="0.0" y="972" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="zhj-XU-nHz"/>
+                                    <barButtonItem style="plain" id="QXK-O6-yCR">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="NtY-UK-iK4">
+                                            <rect key="frame" x="264" y="7" width="239" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="" image="Rotation"/>
+                                                <segment title="" image="Pan"/>
+                                                <segment title="" image="Zoom"/>
+                                                <segment title="" image="ClipX"/>
+                                                <segment title="" image="ClipY"/>
+                                                <segment title="" image="ClipZ"/>
+                                                <segment title="" image="Alpha"/>
+                                                <segment title="" image="Home"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="indexChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="2II-Kc-zgW"/>
+                                                <action selector="indexChanged:" destination="BV1-FR-VrT" eventType="touchDown" id="fys-ko-Q0y"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="wmP-Qi-gXb"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </glkView>
+                    <navigationItem key="navigationItem" id="cyh-Zi-pu2"/>
+                    <connections>
+                        <outlet property="ToolbarButtons" destination="NtY-UK-iK4" id="bm9-bZ-je6"/>
+                    </connections>
+                </glkViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-69" y="-162"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Alpha" width="44" height="44"/>
+        <image name="ClipX" width="249" height="405"/>
+        <image name="ClipY" width="405" height="250"/>
+        <image name="ClipZ" width="308" height="258"/>
+        <image name="Home" width="44" height="44"/>
+        <image name="Pan" width="422" height="423"/>
+        <image name="Rotation" width="44" height="44"/>
+        <image name="Zoom" width="414" height="541"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <nil key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+</document>
